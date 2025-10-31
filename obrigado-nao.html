@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obrigado pela resposta</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { display:flex; align-items:center; justify-content:center; min-height:100vh; text-align:center; padding:2rem; }
+        .card { max-width:520px; background: #fff7fb; border-radius:12px; padding:2rem; box-shadow:0 8px 24px rgba(0,0,0,0.08);} 
+        .btn { margin-top:1rem; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Recebemos sua resposta 💌</h1>
+        <p>Muito obrigada por avisar. Sentiremos sua falta, mas sabemos que ficará na torcida!</p>
+        <p>Você pode fechar esta janela agora.</p>
+        <button id="fecharBtn" class="btn" onclick="tryClose()">Fechar janela</button>
+        <div id="closeFallback" style="display:none; margin-top:1rem; text-align:left">
+            <strong>Não conseguiu fechar automaticamente?</strong>
+            <ul>
+                <li>Feche a aba manualmente (atalho: <kbd>Ctrl</kbd>+<kbd>W</kbd> no Windows/Linux, <kbd>⌘</kbd>+<kbd>W</kbd> no Mac).</li>
+                <li>Ou clique em "Abrir página em branco e tentar fechar" abaixo — alguns navegadores permitem fechar após navegar para uma página em branco.</li>
+            </ul>
+            <button class="btn" onclick="openBlankAndClose()">Abrir página em branco e tentar fechar</button>
+        </div>
+    </div>
+
+    <script>
+        function tryClose(){
+            const btn = document.getElementById('fecharBtn');
+            if (btn) btn.disabled = true;
+
+            try { window.close(); } catch(e) {}
+            try { window.open('', '_self'); window.close(); } catch(e) {}
+            try { window.location.href = 'about:blank'; setTimeout(function(){ try { window.close(); } catch(e){} }, 200); } catch(e) {}
+
+            setTimeout(function(){ const fallback = document.getElementById('closeFallback'); if (fallback) fallback.style.display = 'block'; }, 600);
+        }
+
+        function openBlankAndClose(){
+            try {
+                const newWin = window.open('about:blank', '_blank');
+                setTimeout(function(){
+                    try { if (newWin) newWin.close(); } catch(e){}
+                    try { window.close(); } catch(e){}
+                }, 300);
+            } catch(e) {
+                try { window.close(); } catch(e){}
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obrigado — Presença Confirmada</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { display:flex; align-items:center; justify-content:center; min-height:100vh; text-align:center; padding:2rem; }
+        .card { max-width:520px; background: #fff7fb; border-radius:12px; padding:2rem; box-shadow:0 8px 24px rgba(0,0,0,0.08);} 
+        .btn { margin-top:1rem; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Presença Confirmada ✨</h1>
+        <p>Obrigada — Sua presença foi registrada com carinho. Você já pode fechar esta janela.</p>
+        <button id="fecharBtn" class="btn" onclick="tryClose()">Fechar janela</button>
+        <div id="closeFallback" style="display:none; margin-top:1rem; text-align:left">
+            <strong>Não conseguiu fechar automaticamente?</strong>
+            <ul>
+                <li>Feche a aba manualmente (atalho: <kbd>Ctrl</kbd>+<kbd>W</kbd> no Windows/Linux, <kbd>⌘</kbd>+<kbd>W</kbd> no Mac).</li>
+                <li>Ou clique em "Abrir página em branco e tentar fechar" abaixo — alguns navegadores permitem fechar após navegar para uma página em branco.</li>
+            </ul>
+            <button class="btn" onclick="openBlankAndClose()">Abrir página em branco e tentar fechar</button>
+        </div>
+    </div>
+
+    <script>
+        function tryClose(){
+            // esconder botão para evitar cliques múltiplos
+            const btn = document.getElementById('fecharBtn');
+            if (btn) btn.disabled = true;
+
+            // tentativa 1: close direto
+            try { window.close(); } catch(e) {}
+
+            // tentativa 2: reabrir no mesmo contexto e fechar
+            try {
+                window.open('', '_self');
+                window.close();
+            } catch(e) {}
+
+            // tentativa 3: navegar para about:blank e tentar fechar
+            try {
+                window.location.href = 'about:blank';
+                setTimeout(function(){ try { window.close(); } catch(e){} }, 200);
+            } catch(e) {}
+
+            // após as tentativas, mostrar fallback com instruções
+            setTimeout(function(){
+                const fallback = document.getElementById('closeFallback');
+                if (fallback) fallback.style.display = 'block';
+            }, 600);
+        }
+
+        function openBlankAndClose(){
+            // Abrir uma nova janela/tab com about:blank e tentar fechar ela e a janela atual.
+            try {
+                const newWin = window.open('about:blank', '_blank');
+                // fechar a nova janela após curto delay e tentar fechar a atual
+                setTimeout(function(){
+                    try { if (newWin) newWin.close(); } catch(e){}
+                    try { window.close(); } catch(e){}
+                }, 300);
+            } catch(e){
+                // fallback: apenas tentar fechar a janela atual
+                try { window.close(); } catch(e){}
+            }
+        }
+    </script>
+</body>
+</html>

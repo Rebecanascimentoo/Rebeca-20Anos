@@ -219,27 +219,61 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Seção de Mensagem */
+/* Seção de Mensagem / Formulário */
 .secao-mensagem {
-    display: none;
-    background: rgba(255, 255, 255, 0.8);
+    display: block; /* Mostrar o formulário */
+    background: rgba(255, 255, 255, 0.9);
     padding: 30px;
     border-radius: 20px;
     margin: 20px 0;
-    text-align: center;
+    text-align: left;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
+.secao-mensagem .aviso {
+    font-size: 0.9rem;
+    color: #7f1d6a;
+    margin-bottom: 12px;
+}
+
+.secao-mensagem form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.secao-mensagem label {
+    font-size: 0.95rem;
+    color: #4a4a4a;
+}
+
+.secao-mensagem input[type="text"],
+.secao-mensagem input[type="email"],
 .secao-mensagem textarea {
     width: 100%;
-    min-height: 100px;
-    padding: 15px;
-    border: 2px solid #ffb6c1;
+    padding: 12px 14px;
+    border: 1.5px solid #e6b7d6;
     border-radius: 10px;
     font-family: 'Playfair Display', serif;
     font-size: 1rem;
+    outline: none;
+}
+
+.secao-mensagem input:focus, .secao-mensagem textarea:focus {
+    border-color: #c084fc;
+    box-shadow: 0 4px 12px rgba(192, 132, 252, 0.12);
+}
+
+.secao-mensagem textarea {
+    min-height: 120px;
     resize: vertical;
-    margin-bottom: 15px;
+}
+
+.secao-mensagem .btn-enviar {
+    align-self: flex-end;
+    padding: 10px 22px;
+    border-radius: 20px;
+    font-size: 1rem;
 }
 
 .btn-enviar {
