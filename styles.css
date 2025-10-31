@@ -1,0 +1,320 @@
+/* Reset e Estilos Gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(135deg, #cfc5c5 0%, #fdf2f8 50%, #908e8f 100%);
+    color: #4a4a4a;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh; /* Altura mínima da viewport */
+}
+
+/* Animação de Pétalas Caindo */
+.petala {
+    position: fixed; /* Mudar de absolute para fixed */
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle at 30% 30%, #fff 0%, #ffb6c1 50%, #ff69b4 100%);
+    border-radius: 50% 0 50% 0;
+    opacity: 0.7;
+    animation: cair linear infinite;
+    top: 0; /* Sempre começar do topo da viewport */
+    pointer-events: none; /* Não interferir com cliques */
+}
+
+@keyframes cair {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg); /* Apenas 100vh (altura da tela) */
+        opacity: 0;
+    }
+}
+
+/* Container Principal */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+    min-height: 100vh; /* Apenas altura da viewport */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden; /* Prevenir qualquer overflow */
+}
+
+
+/* Header - Título e Frase */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.titulo {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #ff0582; /* Rosa queimado */
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.subtitulo {
+    font-size: 1.2rem;
+    color: #000000; /* preto */
+    font-style: italic;
+}
+
+/* Espaço para Foto Principal */
+.foto-principal {
+    width: 80%;
+    max-width: 300px;
+    height: 440px;
+    max-height: 400px;
+    margin: 20px auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    display: block;
+}
+
+.foto-principal img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Elementos Decorativos - SVGs de Flores */
+/* Elementos Decorativos - CORRIGIDO */
+.flor {
+    position: fixed; /* Mantém fixed mas vamos ajustar */
+    opacity: 0.6; /* Aumentei a opacidade para ficar mais visível */
+    z-index: 2; /* Aumentei o z-index para ficar acima do fundo */
+    pointer-events: none;
+}
+
+.lirio-branco {
+    top: 15%; /* Ajustei a posição */
+    left: 5%; /* Mais para a esquerda */
+    width: 100px; /* Aumentei o tamanho */
+    height: 100px;
+    animation: flutuar 6s ease-in-out infinite;
+}
+
+.rosa {
+    bottom: 15%; /* Ajustei a posição */
+    right: 5%; /* Mais para a direita */
+    width: 80px; /* Aumentei o tamanho */
+    height: 80px;
+    animation: flutuar 8s ease-in-out infinite reverse;
+}
+
+/* Garantir que os SVGs sejam visíveis */
+.lirio-branco svg, .rosa svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 5px rgba(102, 172, 22, 0.1)); /* Sombra suave para destacar */
+}
+
+@keyframes flutuar {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(5deg); } /* Aumentei o movimento */
+}
+
+/* Seção de Detalhes */
+.detalhes {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 20px;
+    margin: 20px 0;
+    text-align: center;
+.btn-mensagem {
+    background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+    color: rgb(255, 255, 255);
+}
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    backdrop-filter: blur(10px);
+}
+
+.detalhes h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: #bb76ff;
+    margin-bottom: 20px;
+}
+
+.detalhe-item {
+    font-size: 1.1rem;
+    margin: 10px 0;
+    color: #6b7280;
+}
+
+/* Botões Interativos */
+.botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 30px 0;
+    align-items: center;
+}
+
+.btn {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-family: 'Playfair Display', serif;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.btn-confirmar {
+    background: linear-gradient(135deg, #ff69b4, #c084fc);
+    color: white;
+}
+
+.btn-nao {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+.btn-mensagem {
+    background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* Mensagens de Confirmação */
+.mensagem {
+    display: none;
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    margin: 20px 0;
+    font-size: 1.2rem;
+    color: #c084fc;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Seção de Mensagem */
+.secao-mensagem {
+    display: none;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 20px;
+    margin: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.secao-mensagem textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 15px;
+    border: 2px solid #ffb6c1;
+    border-radius: 10px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    resize: vertical;
+    margin-bottom: 15px;
+}
+
+.btn-enviar {
+    background: #c084fc;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Playfair Display', serif;
+}
+
+.btn-enviar:hover {
+    background: #a855f7;
+}
+
+/* Rodapé */
+.rodape {
+    text-align: center;
+    margin-top: auto;
+    padding: 10px;
+    color: #0c0c0c;
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .titulo {
+        font-size: 2.5rem;
+    }
+
+    .subtitulo {
+        font-size: 1rem;
+    }
+
+    .detalhes {
+        padding: 20px;
+    }
+
+    .botoes {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .flor {
+        transform: scale(0.7);
+    }
+
+    .lirio-branco {
+        left: 5%;
+    }
+
+    .rosa {
+        right: 5%;
+    }
+
+    .foto-principal {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .titulo {
+        font-size: 2rem;
+    }
+
+    .foto-principal {
+        height: 200px;
+    }
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite de Aniversário - Rebeca 20 Anos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Animação de Pétalas (geradas via JS) -->
+    
+    <!-- Flores Decorativas (SVGs Simples) -->
+    <div class="flor lirio-branco">
+        <svg viewBox="0 0 100 100">
+            <!-- Lírio Branco Simples (vetor delicado) -->
+            <path d="M50 20 Q30 10 20 30 Q10 50 30 70 Q50 80 70 70 Q90 50 80 30 Q70 10 50 20 Z" fill="#fff" stroke="#ffb6c1" stroke-width="2"/>
+            <circle cx="50" cy="40" r="5" fill="#fff"/>
+            <path d="M40 50 Q50 60 60 50" stroke="#ffb6c1" stroke-width="2" fill="none"/>
+        </svg>
+    </div>
+    <div class="flor rosa">
+        <svg viewBox="0 0 100 100">
+            <!-- Rosa Simples (vetor delicado) -->
+            <path d="M50 30 Q20 10 20 50 Q20 80 50 90 Q80 80 80 50 Q80 10 50 30 Z" fill="#ff69b4" stroke="#fff" stroke-width="2"/>
+            <circle cx="50" cy="45" r="8" fill="#ff69b4"/>
+            <path d="M40 55 Q50 65 60 55" stroke="#fff" stroke-width="2" fill="none"/>
+        </svg>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="titulo">20 anos de Rebeca </h1>
+            <p class="subtitulo">Você está convidado(a) para uma tarde especial entre flores e celebração</p>
+            
+            <!-- Espaço para Foto Principal (substitua src pela sua foto) -->
+            <div class="foto-principal">
+                <img src=">
+            </div>
+        </header>
+
+        <!-- Detalhes da Festa -->
+        <section class="detalhes">
+            <h2>Detalhes da Festa</h2>
+            <div class="detalhe-item">📅 15 de Novembro de 2025</div>
+            <div class="detalhe-item">⏰ 14:00</div>
+
+        <!-- Botões Interativos -->
+        <section class="botoes">
+            <button class="btn btn-confirmar" onclick="confirmarPresenca()">🎀 Confirmar presença</button>
+            <button class="btn btn-nao" onclick="naoPodereiIr()">❌ Não poderei ir</button>
+           
+
+        <!-- Mensagem de Confirmação -->
+        <div id="mensagemConfirmacao" class="mensagem"></div>
+
+
+        <!-- Rodapé -->
+        <footer class="rodape">
+            Com carinho, Rebeca 💕
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
